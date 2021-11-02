@@ -489,6 +489,32 @@
 
 ### 回放文件（音视频）生成通知: cmdId=100:
 
+##### 字段说明：
+
+| 名称                            | 类型    | 说明                                                         |
+| ------------------------------- | ------- | ------------------------------------------------------------ |
+| data.record.classBeginTimestamp | Long    | 课程开始时间，单位：毫秒                                     |
+| data.record.classEndTimestamp   | Long    | 课程结束时间，单位：毫秒                                     |
+| data.record.recordId            | String  | 录制id                                                       |
+| data.recordItemList.roomUuid    | String  | room唯一号                                                   |
+| data.recordItemList.roomCid     | String  | 音视频房间cid                                                |
+| data.recordItemList.userName    | String  | 用户名                                                       |
+| data.recordItemList.role        | String  | 用户角色                                                     |
+| data.recordItemList.recordId    | String  | 录制id                                                       |
+| data.recordItemList.roomUid     | Long    | 音视频房间uid                                                |
+| data.recordItemList.type        | String  | 文件的类型（扩展名）：实时音频录制文件(aac)、白板录制文件(gz)、实时视频录制文件(mp4)、互动直播视频录制文件(flv) |
+| data.recordItemList.mix         | Integer | 是否为混合录制文件，1：混合录制文件；2：单人录制文件         |
+| data.recordItemList.filename    | String  | 文件名，直接存储，混合录制文件filename带有"-mix"标记         |
+| data.recordItemList.md5         | String  | 文件的md5值                                                  |
+| data.recordItemList.size        | Long    | 文件大小，单位为字符                                         |
+| data.recordItemList.duration    | Long    | 时长，单位：秒                                               |
+| data.recordItemList.url         | String  | 文件的下载地址                                               |
+| data.recordItemList.pieceIndex  | Long    | 录制文件的切片索引，如果单通通话录制时长超过切片时长，则录制文件会被且被切割成多个文件 |
+| data.recordItemList.timestamp   | Long    | 文件生成的系统时间                                           |
+| data.recordItemList.subStream   | Boolean | 是否是辅流录制文件                                           |
+
+
+
 ```json
 {
 	"sequence": 1,
@@ -522,20 +548,22 @@
 				"timestamp": 1626155660066,
 				"subStream": false
 			},
-			{
+            {
+				"userName": "仿佛个g",
+				"role": "host",
 				"recordId": "202784780381605888",
-				"roomUid": 0,
-				"type": "gz",
+				"roomUid": 2184,
+				"type": "aac",
 				"mix": 2,
-				"filename": "32105279927-208147924592257-1626155661111-0.gz",
-				"md5": "bd5018f0d399641f68fbdcd7fa6deedd",
-				"size": 977,
-				"duration": 2269,
-				"url": "https://xxx.gz",
+				"filename": "2184-43985523771345-1234567123456-0.aac",
+				"md5": "4ebc9eeefa2998e8776d6f2697a7ae62",
+				"size": 251277835,
+				"duration": 1208,
+				"url": "http://xxx.mp4",
 				"pieceIndex": 0,
-				"timestamp": 1626155661111,
+				"timestamp": 1626155660066,
 				"subStream": false
-			}
+			},
 		]
 	},
 	"timestamp": 1632299998307
@@ -543,6 +571,8 @@
 ```
 
 ### 回放文件（白板）生成通知: cmdId=101:
+
+字段说明，请参考：cmdId=100的字段说明
 
 ```json
 {
@@ -561,22 +591,6 @@
 			"roomCid": "43985523771345"
 		},
 		"recordItemList": [
-			{
-				"userName": "仿佛个g",
-				"role": "host",
-				"recordId": "202784780381605888",
-				"roomUid": 2184,
-				"type": "mp4",
-				"mix": 2,
-				"filename": "2184-43985523771345-1234567123456-0.mp4",
-				"md5": "4ebc9eeefa2998e8776d6f2697a7ae62",
-				"size": 251277835,
-				"duration": 1208,
-				"url": "http://xxx.mp4",
-				"pieceIndex": 0,
-				"timestamp": 1626155660066,
-				"subStream": false
-			},
 			{
 				"recordId": "202784780381605888",
 				"roomUid": 0,

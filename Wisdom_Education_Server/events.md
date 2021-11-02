@@ -100,6 +100,8 @@
 |50|房间创建通知, 仅存在应用通知抄送|房间创建|
 |51|房间删除通知|房间关闭后, 主动关闭或全部成员退出|
 |99|自定义消息通知|对成员发送自定义消息后|
+|100|回放文件（音视频）生成通知| 直播结束-生成了音视频回放文件      |
+|101|回放文件（白板）生成通知|直播结束-生成了白板回放文件|
 
 ### 房间状态变更: CmdId=1:
 | 名称|    类型|    描述|
@@ -484,3 +486,114 @@
   }
 }
 ```
+
+### 回放文件（音视频）生成通知: cmdId=100:
+
+```json
+{
+	"sequence": 1,
+	"appKey": "app_id_test",
+	"roomUuid": "12314111",
+	"type": "R",
+	"cmd": 100,
+	"version": 1,
+	"data": {
+		"record": {
+			"classBeginTimestamp": 1626155908521,
+			"classEndTimestamp": 1626156542213,
+			"recordId": "202784780381605888",
+			"roomUuid": "10017",
+			"roomCid": "43985523771345"
+		},
+		"recordItemList": [
+			{
+				"userName": "仿佛个g",
+				"role": "host",
+				"recordId": "202784780381605888",
+				"roomUid": 2184,
+				"type": "mp4",
+				"mix": 2,
+				"filename": "2184-43985523771345-1234567123456-0.mp4",
+				"md5": "4ebc9eeefa2998e8776d6f2697a7ae62",
+				"size": 251277835,
+				"duration": 1208,
+				"url": "http://xxx.mp4",
+				"pieceIndex": 0,
+				"timestamp": 1626155660066,
+				"subStream": false
+			},
+			{
+				"recordId": "202784780381605888",
+				"roomUid": 0,
+				"type": "gz",
+				"mix": 2,
+				"filename": "32105279927-208147924592257-1626155661111-0.gz",
+				"md5": "bd5018f0d399641f68fbdcd7fa6deedd",
+				"size": 977,
+				"duration": 2269,
+				"url": "https://xxx.gz",
+				"pieceIndex": 0,
+				"timestamp": 1626155661111,
+				"subStream": false
+			}
+		]
+	},
+	"timestamp": 1632299998307
+}
+```
+
+### 回放文件（白板）生成通知: cmdId=101:
+
+```json
+{
+	"sequence": 1,
+	"appKey": "app_id_test",
+	"roomUuid": "12314111",
+	"type": "R",
+	"cmd": 101,
+	"version": 1,
+	"data": {
+		"record": {
+			"classBeginTimestamp": 1626155908521,
+			"classEndTimestamp": 1626156542213,
+			"recordId": "202784780381605888",
+			"roomUuid": "10017",
+			"roomCid": "43985523771345"
+		},
+		"recordItemList": [
+			{
+				"userName": "仿佛个g",
+				"role": "host",
+				"recordId": "202784780381605888",
+				"roomUid": 2184,
+				"type": "mp4",
+				"mix": 2,
+				"filename": "2184-43985523771345-1234567123456-0.mp4",
+				"md5": "4ebc9eeefa2998e8776d6f2697a7ae62",
+				"size": 251277835,
+				"duration": 1208,
+				"url": "http://xxx.mp4",
+				"pieceIndex": 0,
+				"timestamp": 1626155660066,
+				"subStream": false
+			},
+			{
+				"recordId": "202784780381605888",
+				"roomUid": 0,
+				"type": "gz",
+				"mix": 2,
+				"filename": "32105279927-208147924592257-1234561234567-0.gz",
+				"md5": "bd5018f0d399641f68fbdcd7fa6deedd",
+				"size": 977,
+				"duration": 2269,
+				"url": "https://xxx.gz",
+				"pieceIndex": 0,
+				"timestamp": 1626155661111,
+				"subStream": false
+			}
+		]
+	},
+	"timestamp": 1632299998307
+}
+```
+
